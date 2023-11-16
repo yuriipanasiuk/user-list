@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: production ? "[name].[contenthash].js" : "[name].js",
-    publicPath: "/user-list",
+    publicPath: "/",
   },
   module: {
     rules: [
