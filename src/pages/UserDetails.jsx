@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, NavLink, useLocation, Outlet } from "react-router-dom";
+
 import { getOneUser } from "../ApiService/ApiService";
 import Container from "../components/Container";
 import BackLink from "../components/BackLink";

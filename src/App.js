@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import UserList from "./components/UserList";
 import UserDetails from "./pages/UserDetails";
 import UserPosts from "./components/UserPosts";

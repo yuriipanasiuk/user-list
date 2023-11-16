@@ -1,6 +1,7 @@
 {
   "name": "user-list",
   "version": "1.0.0",
+  "homepage": "https://yuriipanasiuk.github.io/user-list/",
   "description": "",
   "main": "index.js",
   "scripts": {
