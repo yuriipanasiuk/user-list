@@ -3,16 +3,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const ghPages = require("gh-pages");
 
 const production = process.env.NODE_ENV === "production";
 
 module.exports = {
   entry: { myAppName: path.resolve(__dirname, "./src/index.js") },
   output: {
+    filename: "bundle.js",
     path: path.resolve(__dirname, "./dist"),
-    filename: production ? "[name].[contenthash].js" : "[name].js",
-    publicPath: "/",
   },
   module: {
     rules: [
@@ -53,7 +51,6 @@ module.exports = {
       title: "Webpack & React",
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
-      base: production ? "/user-list/" : "/",
     }),
     new MiniCssExtractPlugin({
       filename: production ? "[name].[contenthash].css" : "[name].css",
@@ -69,25 +66,3 @@ module.exports = {
   },
   mode: production ? "production" : "development",
 };
-
-if (production) {
-  module.exports.plugins.push({
-    apply: (compiler) => {
-      compiler.hooks.afterEmit.tap("AfterEmitPlugin", (compilation) => {
-        ghPages.publish(
-          path.join(__dirname, "dist"),
-          {
-            branch: "gh-pages",
-          },
-          (err) => {
-            if (err) {
-              console.error(err);
-            } else {
-              console.log("Deployed to GitHub Pages");
-            }
-          }
-        );
-      });
-    },
-  });
-}
