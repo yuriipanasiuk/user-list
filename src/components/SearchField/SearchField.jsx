@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import styles from "./SearchField.module.scss";
 
 const SearchField = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,6 +22,7 @@ const SearchField = () => {
         onChange={handleSearch}
         placeholder="write username for search"
         autoFocus
+        className={styles.searchInput}
       />
     </form>
   );

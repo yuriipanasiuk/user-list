@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 
-import UserItem from "../UserItem/UserItem";
-import SearchField from "../SearchField/SearchField";
-import Container from "../Container/Container";
 import { getAllUsers } from "../../ApiService/ApiService";
+import UserItem from "../UserItem";
+import SearchField from "../SearchField";
+import Container from "../Container";
+
 import styles from "./UserList.module.scss";
 
 const UserList = () => {
@@ -40,28 +41,30 @@ const UserList = () => {
 
   return (
     <Container>
-      <div className={styles.wraper}>
-        <SearchField />
+      <section className={styles.section}>
+        <div className={styles.wraper}>
+          <SearchField />
 
-        <select
-          className={styles.sortButton}
-          onChange={handleSortChange}
-          value={sorted ? "asc" : "desc"}
-        >
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </div>
-      <h1>User list</h1>
-      {visibleUsers.length > 0 ? (
-        <ul>
-          {visibleUsers.map((user) => (
-            <UserItem key={user.id} item={user} from={location} />
-          ))}
-        </ul>
-      ) : (
-        <p>user not found</p>
-      )}
+          <select
+            className={styles.sortButton}
+            onChange={handleSortChange}
+            value={sorted ? "asc" : "desc"}
+          >
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+        <p className={styles.title}>User list</p>
+        {visibleUsers.length > 0 ? (
+          <ul>
+            {visibleUsers.map((user) => (
+              <UserItem key={user.id} item={user} from={location} />
+            ))}
+          </ul>
+        ) : (
+          <p>user not found</p>
+        )}
+      </section>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getUserAlbum } from "../../ApiService/ApiService";
 import { useParams } from "react-router-dom";
+import { getUserAlbum } from "../../ApiService/ApiService";
+import styles from "./UserAlbums.module.scss";
 
 const UserAlbums = () => {
   const [albums, setAlbums] = useState([]);
@@ -16,8 +17,10 @@ const UserAlbums = () => {
 
   return (
     <div>
-      <h2>User Albums</h2>
-      <p>Title: {albums.title}</p>
+      <p className={styles.title}>User Albums</p>
+      <p>
+        <span>Title:</span> {albums.title}
+      </p>
     </div>
   );
 };

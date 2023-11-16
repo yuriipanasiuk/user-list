@@ -1,16 +1,42 @@
 .actives {
+  text-decoration: underline;
+}
+
+.inactive {
   color: black;
   text-decoration: none;
+}
 
-  &:active {
-    color: orangered;
-    text-decoration: underline;
-  }
+.wraper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
-  &:not(.active) {
-    &:hover {
-      color: red;
-      text-decoration: underline;
-    }
-  }
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.navigation a {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.navigation a.active {
+  color: orangered;
+}
+
+.title {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.info {
+  margin: 0;
+  font-size: 14px;
+  color: silver;
 }

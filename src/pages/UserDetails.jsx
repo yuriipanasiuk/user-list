@@ -1,12 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  useParams,
-  NavLink,
-  Link,
-  useLocation,
-  Outlet,
-} from "react-router-dom";
+import { useParams, NavLink, useLocation, Outlet } from "react-router-dom";
 import { getOneUser } from "../ApiService/ApiService";
+import Container from "../components/Container";
+import BackLink from "../components/BackLink";
 
 import styles from "./UserDetails.module.scss";
 
@@ -25,22 +21,41 @@ const UserDetails = () => {
   }, []);
 
   return (
-    <div>
-      <Link to={backLink.current}>Back to user</Link>
-      <h2>User details</h2>
-      <p>Name: {user.name}</p>
-      <p>Phone: {user.phone}</p>
-      <p>Website: {user.website}</p>
-      <div style={{ display: "flex", gap: "12px" }}>
-        <NavLink to="album" className={styles.actives}>
-          Albums
-        </NavLink>
-        <NavLink to="post" className={styles.actives}>
-          Posts
-        </NavLink>
-      </div>
-      <Outlet />
-    </div>
+    <Container>
+      <section className={styles.wraper}>
+        <BackLink link={backLink} />
+        <p className={styles.title}>User details</p>
+        <p>
+          <span>Name:</span> {user.name}
+        </p>
+        <p>
+          <span>Phone:</span> {user.phone}
+        </p>
+        <p>
+          <span> Website:</span> {user.website}
+        </p>
+        <p className={styles.info}>To look more click POSTS or ALBUMS</p>
+        <nav className={styles.navigation}>
+          <NavLink
+            to="album"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.inactive
+            }
+          >
+            Albums
+          </NavLink>
+          <NavLink
+            to="post"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.inactive
+            }
+          >
+            Posts
+          </NavLink>
+        </nav>
+        <Outlet />
+      </section>
+    </Container>
   );
 };
 

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { getUserPost } from "../../ApiService/ApiService";
 import { useParams } from "react-router-dom";
+import { getUserPost } from "../../ApiService/ApiService";
+
+import styles from "./UserPost.module.scss";
 
 const UserPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -16,9 +18,13 @@ const UserPosts = () => {
 
   return (
     <div>
-      <h2>User Posts</h2>
-      <p>Title: {posts.title}</p>
-      <p>Text: {posts.body}</p>
+      <p className={styles.title}>User Posts</p>
+      <p>
+        <span>Title:</span> {posts.title}
+      </p>
+      <p>
+        <span>Text:</span> {posts.body}
+      </p>
     </div>
   );
 };
