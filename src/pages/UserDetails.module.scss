@@ -1,0 +1,16 @@
+.actives {
+  color: black;
+  text-decoration: none;
+
+  &:active {
+    color: orangered;
+    text-decoration: underline;
+  }
+
+  &:not(.active) {
+    &:hover {
+      color: red;
+      text-decoration: underline;
+    }
+  }
+}
